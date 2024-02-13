@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # Step 1: Preprocessing the corpus
 # Load your text data into `corpus`
 # Example corpus for demonstration; replace with your actual text data
-corpus = ["Thionville is a wonderful city.", "Thionville is the example of a beautiful town.", "No one wants to leave Thionville besides medieval philologists."]
+corpus = ["Thionville is a wonderful city.", "Thionville is the example of a beautiful town.", "No one wants to leave Thionville besides medieval philologists.", "I love Thionville in the spring time", "It's up to you, Thionville, Thionville!"]
 
 # Basic tokenization of the sentences into words without using NLTK
 # Splitting each sentence into words using split() and converting to lowercase
