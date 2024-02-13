@@ -34,8 +34,8 @@ def find_similar_words(embeddings_dict, word, topn=10):
     sorted_similarities = sorted(similarities.items(), key=lambda item: item[1], reverse=True)
     return sorted_similarities[1:topn+1]  # Exclude the first word (itself)
 
-# Example: Find words similar to 'example' (ensure 'example' is in your GloVe vocabulary)
-# similar_words = find_similar_words(glove_embeddings, 'example')
+# Example: Find words similar to 'Thionville' (ensure 'Thionville' is in your GloVe vocabulary)
+# similar_words = find_similar_words(glove_embeddings, 'Thionville')
 
 # Step 3: Visualizing the word embeddings (Optional)
 # This step would be similar to the one provided for Word2Vec, with adjustments for using GloVe embeddings.
