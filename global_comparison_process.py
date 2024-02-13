@@ -35,7 +35,7 @@ def load_corpus_and_compute_frequencies(corpus_dir="corpus"):
 word_vectors = KeyedVectors.load("word_embedding_models/100_English_novels_GloVe_100_dimensions.model", mmap='r')
 
 # Function to compute word similarities using pre-trained word vectors
-def compute_word_similarities(word_vectors, top_n=100):
+def compute_word_similarities(word_vectors, top_n=10):
     vocabulary = list(word_vectors.index_to_key)
     word_similarities_all = {}
     
