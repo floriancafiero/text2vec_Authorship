@@ -46,7 +46,7 @@ def compute_word_similarities(word_vectors, top_n=10):
     
     # Convert the similarities data into a DataFrame
     df_similarities = pd.DataFrame.from_dict(word_similarities_all, orient='index')
-    # Optionally, remove the word itself from its list of similar words
+    # Optionally, remove the word itself from its list of similar words (drops the first column)
     df_similarities = df_similarities.iloc[:, 1:]
     
     return df_similarities
