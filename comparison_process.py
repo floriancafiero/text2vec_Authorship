@@ -119,5 +119,61 @@ def pick_training_texts(available_texts):
 # Assuming available_texts is a list of filenames in your corpus
 # training_texts = pick_training_texts(available_texts)
 
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import f1_score
+from sklearn.naive_bayes import MultinomialNB  # Example classifier
+import numpy as np
+
+# Assuming `compute_subset_frequencies` and `pick_training_texts` functions are defined as previously
+
+def supervised_classification(dtm_df, word_similarities_df, mfw_coverage, semantic_area_coverage):
+    """
+    Perform supervised classification over increasing number of nearest neighbors.
+
+    :param dtm_df: Document-term matrix as a DataFrame.
+    :param word_similarities_df: DataFrame of word similarities.
+    :param mfw_coverage: Range of most frequent words to consider.
+    :param semantic_area_coverage: Range of semantic areas (number of nearest neighbors) to cover.
+    :return: DataFrame of classification performance across different semantic areas.
+    """
+    collect_results_all_similarity_areas = pd.DataFrame(index=mfw_coverage, columns=semantic_area_coverage)
+    
+    for surrounding_words in semantic_area_coverage:
+        subset_freqs_df = compute_subset_frequencies(dtm_df, word_similarities_df, surrounding_words)
+        available_texts = subset_freqs_df.index.tolist()
+        texts_in_training_set = pick_training_texts(available_texts)
+        
+        # Splitting the dataset into training and test sets
+        training_set = subset_freqs_df.loc[texts_in_training_set]
+        test_set = subset_freqs_df.drop(texts_in_training_set)
+        
+        for mfw in mfw_coverage:
+            # Assuming classification procedure here; adjust as needed for your classifier
+            X_train, X_test = training_set.iloc[:, :mfw], test_set.iloc[:, :mfw]
+            y_train = [text.split('_')[0] for text in X_train.index]  # Extracting class labels from filenames
+            y_test = [text.split('_')[0] for text in X_test.index]
+            
+            # Example classification with Multinomial Naive Bayes
+            clf = MultinomialNB()
+            clf.fit(X_train, y_train)
+            y_pred = clf.predict(X_test)
+            
+            # Compute F1 score and collect results
+            f1 = f1_score(y_test, y_pred, average='weighted')
+            collect_results_all_similarity_areas.loc[mfw, surrounding_words] = f1
+    
+    return collect_results_all_similarity_areas
+
+# Example usage parameters
+mfw_coverage = range(100, 1001, 50)
+semantic_area_coverage = list(range(1, 10)) + list(range(10, 100, 10)) + list(range(100, 1000, 100)) + list(range(1000, 10001, 1000))
+
+# Assuming `dtm_df` is your document-term matrix and `df_similarities` is your word similarities DataFrame
+# results_df = supervised_classification(dtm_df, df_similarities, mfw_coverage, semantic_area_coverage)
+
+# Optionally, save `results_df` to a file
+# results_df.to_csv("performance_classification.csv")
+
+
 
 
