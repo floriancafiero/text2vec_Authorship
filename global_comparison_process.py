@@ -32,7 +32,7 @@ def load_corpus_and_compute_frequencies(corpus_dir="corpus"):
     return df_dtm, word_frequencies_abs, word_frequencies_rel
 
 # Load pre-trained word vectors, assuming a file path to the model
-word_vectors = KeyedVectors.load("word_embedding_models/100_English_novels_GloVe_100_dimensions.model", mmap='r')
+word_vectors = KeyedVectors.load("word_embedding_models/GloVe_100_dimensions.model", mmap='r')
 
 # Function to compute word similarities using pre-trained word vectors
 def compute_word_similarities(word_vectors, top_n=10):
