@@ -38,10 +38,4 @@ def find_similar_words(embeddings_dict, word, topn=10):
 # similar_words = find_similar_words(glove_embeddings, 'Thionville')
 # Default of topn as been set up to 10, but should be adjusted depending on the corpus, on the number
 # of words examined in the authorship attribution taks, and on the distance measure used. Values outside
-# [3 ; 100] are however unlikely to be helpful.
-
-# Step 3: Visualizing the word embeddings (Optional)
-# This step would be similar to the one provided for Word2Vec, with adjustments for using GloVe embeddings.
-
-# Note: Since we can't directly demonstrate loading and using GloVe embeddings in this environment,
-# you would need to run this code in your local setup where you have access to the GloVe embeddings file.
+# [3 ; 100] are however unlikely to be helpful (cf. Eder, 2022).
