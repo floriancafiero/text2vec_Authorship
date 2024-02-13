@@ -22,6 +22,7 @@ model = Word2Vec(tokenized_corpus, vector_size=100, window=5, min_count=1, worke
 # After training, use the model to find words similar to a given word
 # For demonstration, finding words similar to 'Thionville'
 similar_words = model.wv.most_similar('Thionville', topn=10)
+similar_words
 
 # Step 4: Visualizing the word embeddings (Optional)
 # This step is optional but can help in understanding the embeddings space
@@ -59,5 +60,3 @@ def plot_embeddings(model):
 
 # Note: Uncomment the line below to visualize the embeddings if desired
 # plot_embeddings(model)
-
-similar_words
