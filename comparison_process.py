@@ -8,7 +8,7 @@ from sklearn.metrics import f1_score
 import numpy as np
 
 # Set the working directory to where the corpus is located
-os.chdir("100_english_novels")
+os.chdir("thionville")
 
 # Define a function to load text files and compute word frequencies
 def load_corpus_and_compute_frequencies(corpus_dir="corpus"):
