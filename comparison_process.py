@@ -3,7 +3,7 @@ import os
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from gensim.models import KeyedVectors
-from sklearn.naive_bayes import MultinomialNB  # Example classifier for demonstration
+from sklearn.naive_bayes import MultinomialNB
 from sklearn.metrics import f1_score
 import numpy as np
 
