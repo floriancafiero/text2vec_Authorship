@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 # Step 1: Preprocessing the corpus
 # Load your text data into `corpus`
 # Example corpus for demonstration; replace with your actual text data
-corpus = ["This is an example sentence.", "This is another example."]
+corpus = ["Thionville is a wonderful city.", "Thionville is the example of a beautiful town.", "No one wants to leave Thionville besides medieval philologists."]
 
 # Basic tokenization of the sentences into words without using NLTK
 # Splitting each sentence into words using split() and converting to lowercase
@@ -20,8 +20,8 @@ model = Word2Vec(tokenized_corpus, vector_size=100, window=5, min_count=1, worke
 
 # Step 3: Using the model to find similar words
 # After training, use the model to find words similar to a given word
-# For demonstration, finding words similar to 'example'
-similar_words = model.wv.most_similar('example', topn=100)
+# For demonstration, finding words similar to 'Thionville'
+similar_words = model.wv.most_similar('Thionville', topn=10)
 
 # Step 4: Visualizing the word embeddings (Optional)
 # This step is optional but can help in understanding the embeddings space
