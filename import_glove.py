@@ -19,7 +19,7 @@ def load_glove_embeddings(path):
 # Example: Load GloVe embeddings (update the path to your GloVe file location)
 # glove_embeddings = load_glove_embeddings('glove.6B.100d.txt')
 
-# Step 2: Finding similar words
+# Step 2: Finding similar words (cosine similarity).
 def find_similar_words(embeddings_dict, word, topn=10):
     """
     Find and return the most similar words to a given word based on cosine similarity.
