@@ -21,7 +21,7 @@ model = Word2Vec(tokenized_corpus, vector_size=100, window=5, min_count=1, worke
 # Step 3: Using the model to find similar words
 # After training, use the model to find words similar to a given word
 # For demonstration, finding words similar to 'example'
-similar_words = model.wv.most_similar('example', topn=10)
+similar_words = model.wv.most_similar('example', topn=100)
 
 # Step 4: Visualizing the word embeddings (Optional)
 # This step is optional but can help in understanding the embeddings space
